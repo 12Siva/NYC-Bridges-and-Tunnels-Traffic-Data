@@ -23,7 +23,7 @@ def loadDataSet(directory):
     return cashdict, elcdict, totaldict
 
 # analyze: plot the values
-def plotCount(inDataSet, weeksplit=False, cash=True):
+def plotCount(inDataSet, weeksplit=False, cash=True, title="Traffic Count in NYC"):
     fig = plt.figure()
     ax = fig.add_subplot(111)
     NUM_COLORS = 12
@@ -70,10 +70,11 @@ def plotCount(inDataSet, weeksplit=False, cash=True):
         plt.ylabel("Number of Cars Through Cash Booths")
     else:
         plt.ylabel("Number of Cars Through Electronic Booths")
-    plt.title("Traffic Count in NYC")
+    plt.title(title)
     plt.xlabel("Number of Days")
     plt.xticks(range(-1, len(inDataSet['1'])+1, 1))
     plt.grid(True)
+    plt.savefig("Plots/"+str(title))
 
 def standRegres(xArr, yArr):
     # ordinary least square
@@ -89,6 +90,6 @@ def standRegres(xArr, yArr):
 if __name__=='__main__':
     datafile = 'NYC_Daily_Toll_Count'
     cashvalues, elcvalues, totalvalues = loadDataSet(datafile)
-    plotCount(cashvalues, weeksplit=True)
-    plotCount(elcvalues, weeksplit=True, cash=False)
+    plotCount(cashvalues, weeksplit=True, title="Cash Count for Weeks 5-5-14 to 6-9-14")
+    plotCount(elcvalues, weeksplit=True, cash=False, title="Electronic Count for Weeks 5-5-14 to 6-9-14")
     plt.show()
