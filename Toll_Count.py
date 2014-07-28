@@ -24,7 +24,7 @@ def loadDataSet(directory):
 
 # analyze: plot the values
 def plotCount(inDataSet, weeksplit=False, cash=True, title="Traffic Count in NYC"):
-    fig = plt.figure()
+    fig = plt.figure(num=None, figsize=(18, 15), dpi=80, facecolor='w', edgecolor='k')
     ax = fig.add_subplot(111)
     NUM_COLORS = 12
     cm = plt.get_cmap('Set2')
